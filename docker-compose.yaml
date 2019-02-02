@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  cli:
+    build:
+      dockerfile: docker/json-server/Dockerfile
+      context: .
+    volumes:
+      - ./src:/workdir:delegated
+      - ./data:/data:delegated
+    working_dir: /workdir
+    environment:
+      - PORT=6793
+    ports:
+      - "6793:6793"
+    entrypoint:
+      - sh
+      - -c
+      - sleep 1000000
